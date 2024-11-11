@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository contains the capstone project for Axis Bank's Quality Assurance (QA), developed as part of the capstone project requirements for Group 5A. The project covers various QA case studies and aims to provide thorough test scenarios, test cases, and results that align with industry standards in software testing and quality assurance.
+This repository contains the capstone project for Axis Bank's Quality Assurance (QA), developed as part of the capstone project requirements for Group 5. The project covers various QA case studies and aims to provide thorough test scenarios, test cases, and results that align with industry standards in software testing and quality assurance.
 
 ## Project Members
 
