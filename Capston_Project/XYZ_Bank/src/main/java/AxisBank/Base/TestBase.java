@@ -42,6 +42,7 @@ public class TestBase {
 	public void waitForAlert() {
 		wait.until(ExpectedConditions.alertIsPresent());
 	}
+
     // Method to wait until the page is fully loaded
 	public void waitForPageToLoad(int seconds) {
 		new WebDriverWait(driver, Duration.ofSeconds(seconds)).until((ExpectedCondition<Boolean>) wd -> {

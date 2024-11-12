@@ -41,6 +41,7 @@ public class BankManagerLogin extends TestBase {
 		// Wait for add customer tab and click it
 		waitForElementToBeVisible(By.xpath("//button[contains(text(),'Add Customer')]")).click();
 		waitForElementToBeVisible(By.xpath("/html/body/div/div/div[2]/div/div[2]/div"));
+
 		System.out.println("Entering details started");
 		// Enter details and submit
 		addCustomerPage.enterFName(prop.getProperty("fname"));
@@ -51,6 +52,29 @@ public class BankManagerLogin extends TestBase {
 		// Wait for alert and accept
 		waitForAlert();
 		String alertMsg = addCustomerPage.acceptAlert();
+		System.out.println(alertMsg);
+	}
+
+	@Test(priority = 2)
+	public void addInvalidCustomer() throws Exception {
+		// Wait for the Manager Login button and click it
+		waitForElementToBeVisible(By.xpath("//button[contains(.,'Bank Manager Login')]")).click();
+
+		// Wait for add customer tab and click it
+		waitForElementToBeVisible(By.xpath("//button[contains(text(),'Add Customer')]")).click();
+		waitForElementToBeVisible(By.xpath("/html/body/div/div/div[2]/div/div[2]/div"));
+
+		System.out.println("Entering details started");
+		// Enter details and submit
+		addCustomerPage.enterFName(prop.getProperty("ifname"));
+		addCustomerPage.enterLName(prop.getProperty("ilname"));
+		addCustomerPage.enterPCode(prop.getProperty("zip"));
+		addCustomerPage.clickaddCustBtn();
+
+		// Wait for alert and accept
+		waitForAlert();
+		String alertMsg = addCustomerPage.acceptAlert();
+		Assert.assertEquals(alertMsg, "Invalid First Name and Last Name", "Invalid First Name and Last Name");
 		System.out.println(alertMsg);
 	}
 
