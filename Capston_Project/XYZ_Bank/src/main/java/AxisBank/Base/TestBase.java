@@ -3,6 +3,8 @@ package AxisBank.Base;
 import java.io.FileInputStream;
 import java.time.Duration;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -20,6 +22,13 @@ public class TestBase {
 	public static Properties prop;
 
 	public static void initialization() throws InterruptedException {
+		// Get the logger for Selenium manager and set to ERROR level
+		Logger seleniumManagerLogger = Logger.getLogger("org.openqa.selenium.manager.SeleniumManager");
+		seleniumManagerLogger.setLevel(Level.SEVERE);
+
+		// Get the logger for CDP version finder and set to ERROR level
+		Logger cdpVersionFinderLogger = Logger.getLogger("org.openqa.selenium.devtools.CdpVersionFinder");
+		cdpVersionFinderLogger.setLevel(Level.SEVERE);
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get(prop.getProperty("url"));
@@ -43,7 +52,7 @@ public class TestBase {
 		wait.until(ExpectedConditions.alertIsPresent());
 	}
 
-    // Method to wait until the page is fully loaded
+	// Method to wait until the page is fully loaded
 	public void waitForPageToLoad(int seconds) {
 		new WebDriverWait(driver, Duration.ofSeconds(seconds)).until((ExpectedCondition<Boolean>) wd -> {
 			JavascriptExecutor jsExecutor = (JavascriptExecutor) wd;
@@ -63,7 +72,7 @@ public class TestBase {
 
 			return isDocumentReady && isAjaxComplete && isFetchComplete;
 		});
-    }
+	}
 
 	public TestBase() {
 		try {
